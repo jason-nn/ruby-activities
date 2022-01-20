@@ -1,4 +1,9 @@
 class Student
+  # attr_reader :name, :age, :course, :school
+  # attr_writer :name
+
+  attr_accessor :name
+
   def initialize(name, age, course, school)
     @name = name
     @age = age
@@ -14,6 +19,10 @@ class Student
     puts "Hi! I'm a student."
   end
 
+  # def name=(name)
+  #   @name = name
+  # end
+
   class << self
     def hi
       puts 'Hi!'
@@ -26,3 +35,12 @@ jason.intro
 
 Student.intro
 Student.hi
+
+# puts jason.name
+# puts jason.age
+# puts jason.course
+# puts jason.school
+
+jason.name = 'Jason Ho'
+
+puts jason.name
