@@ -85,31 +85,22 @@ class Duck
   def swims
     'swims like a duck'
   end
-
-  def quacks
-    'quacks like a duck'
-  end
 end
 
-class Bird
+class Goose
   def walks
-    'walks like a duck'
+    'walks like a goose'
   end
 
   def swims
-    'swims like a duck'
-  end
-
-  def quacks
-    'quacks like a duck'
+    'swims like a goose'
   end
 end
 
-ducks = [Duck.new, Bird.new]
+birds = [Duck.new, Goose.new]
 
-ducks.each do |duck|
+birds.each do |bird|
   puts
-  puts duck.walks
-  puts duck.swims
-  puts duck.quacks
+  puts bird.walks
+  puts bird.swims
 end
