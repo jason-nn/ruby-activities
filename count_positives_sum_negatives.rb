@@ -1,13 +1,18 @@
 def count_positives_sum_negatives(arr)
   return [] if arr == nil || arr == []
+
+  grouped = arr.group_by { |num| num > 0 }
+  positive = grouped[true]
+  negative = grouped[false]
+
   return [
-    if arr.group_by { |num| num > 0 }[true].respond_to? :length
-      arr.group_by { |num| num > 0 }[true].length
+    if positive.respond_to? :length
+      positive.length
     else
       0
     end,
-    if arr.group_by { |num| num > 0 }[false].respond_to? :sum
-      arr.group_by { |num| num > 0 }[false].sum
+    if negative.respond_to? :sum
+      negative.sum
     else
       0
     end
