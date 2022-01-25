@@ -8,22 +8,22 @@ create table students (
 );
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (1, 'Juan', '-', 'Cruz', 18, 'Manila');
+values (1, 'Juan', 'Blank', 'Cruz', 18, 'Manila');
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (2, 'Anne', '-', 'Wall', 20, 'Manila');
+values (2, 'Anne', 'Blank', 'Wall', 20, 'Manila');
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (3, 'Theresa', '-', 'Joseph', 21, 'Manila');
+values (3, 'Theresa', 'Blank', 'Joseph', 21, 'Manila');
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (4, 'Isaac', '-', 'Gray', 19, 'Laguna');
+values (4, 'Isaac', 'Blank', 'Gray', 19, 'Laguna');
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (5, 'Zack', '-', 'Matthews', 22, 'Marikina');
+values (5, 'Zack', 'Blank', 'Matthews', 22, 'Marikina');
 
 insert into students (id, first_name, middle_name, last_name, age, location)
-values (6, 'Finn', '-', 'Lam', 25, 'Manila');
+values (6, 'Finn', 'Blank', 'Lam', 25, 'Manila');
 
 update students set first_name = 'Ivan', middle_name = 'Ingram', last_name='Howard', age = 25, location = 'Bulacan' where id = 1;
 
