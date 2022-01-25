@@ -28,3 +28,17 @@ values (6, 'Finn', 'Blank', 'Lam', 25, 'Manila');
 update students set first_name = 'Ivan', middle_name = 'Ingram', last_name='Howard', age = 25, location = 'Bulacan' where id = 1;
 
 delete from students where id = 6;
+
+------------------------------
+
+select count(id) from students;
+
+select avg(age) from students;
+
+-- select must be either an aggregate function or the column it is grouped by
+select avg(age), middle_name from students group by middle_name;
+
+
+-- use having instead of where for group by or aggregate function
+
+select * from students order by id asc;
