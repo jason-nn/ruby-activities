@@ -31,6 +31,8 @@ delete from students where id = 6;
 
 ------------------------------
 
+-- NOTES
+
 select count(id) from students;
 
 select avg(age) from students;
