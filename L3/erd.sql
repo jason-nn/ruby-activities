@@ -14,6 +14,18 @@ select concat(a.first_name, ' ' , a.last_name) as actor_full_name, f.title as fi
 
 -- 4.  Determine the potential number of customers a store staff would serve (count the number of customer in the same country as the staff)
 
+select staff_query.staff_full_name, customer_query.customer_count from
+(
+  select count(customer.customer_id) as customer_count, country.country from customer inner join address on customer.address_id = address.address_id inner join city on address.city_id = city.city_id inner join country on city.country_id = country.country_id group by country.country
+) 
+as customer_query
+right join
+(
+select concat(staff.first_name, ' ', staff.last_name) as staff_full_name, country.country from staff inner join address on staff.address_id = address.address_id inner join city on address.city_id = city.city_id inner join country on city.country_id = country.country_id
+)
+as staff_query
+on staff_query.country = customer_query.country;
+
 -- 5. Find the most popular film category per store (determined by the number of rentals)
 
 -- 6. Rank the top 5 actors per country (determined by the number rentals) sort by most popular to least popular
