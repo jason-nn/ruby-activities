@@ -6,7 +6,11 @@ select count(inventory_id) from rental;
 
 -- 2. List all the films of Dan Torn and Dan Streep. Sort by film_title alphabetical order
 
+select f.title as film_title, f.release_year, f.rating, concat(a.first_name, ' ' , a.last_name) as actor_full_name from film_actor fa inner join actor a on fa.actor_id = a.actor_id inner join film f on fa.film_id = f.film_id where a.first_name = 'Dan' and (a.last_name = 'Torn' or a.last_name = 'Streep') order by f.title asc;
+
 -- 3. List all Comedy films of all actors whose last names start with 'D'. Sort by actor_full_name alphabetical order
+
+select concat(a.first_name, ' ' , a.last_name) as actor_full_name, f.title as film_title,c.name as category_name from film_category fc inner join category c on fc.category_id = c.category_id inner join film f on f.film_id = fc.film_id inner join film_actor fa on fa.film_id = f.film_id inner join actor a on fa.actor_id = a.actor_id where c.name = 'Comedy' and a.last_name like 'D%' order by actor_full_name asc;
 
 -- 4.  Determine the potential number of customers a store staff would serve (count the number of customer in the same country as the staff)
 
