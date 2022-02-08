@@ -121,3 +121,5 @@ limit 5;
 
 
 -- 7. Create the ERD of this database.
+
+-- see erd.png in same folder
