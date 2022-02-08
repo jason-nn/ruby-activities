@@ -31,6 +31,93 @@ on staff_query.country = customer_query.country;
 
 -- 5. Find the most popular film category per store (determined by the number of rentals)
 
+-- select store.store_id as store_id, count(category.name) as film_count, category.name as category_name
+-- from rental 
+-- inner join inventory on rental.inventory_id = inventory.inventory_id 
+-- inner join film on inventory.film_id = film.film_id 
+-- inner join film_category on film.film_id = film_category.film_id 
+-- inner join category on film_category.category_id = category.category_id 
+-- inner join staff on rental.staff_id = staff.staff_id 
+-- inner join store on staff.store_id = store.store_id
+-- group by category.name, store.store_id
+-- order by store.store_id, count(category.name) desc
+-- ;
+
+select store.store_id as store_id, count(category.name) as film_count, category.name as category_name
+from rental 
+inner join inventory on rental.inventory_id = inventory.inventory_id 
+inner join film on inventory.film_id = film.film_id 
+inner join film_category on film.film_id = film_category.film_id 
+inner join category on film_category.category_id = category.category_id 
+inner join staff on rental.staff_id = staff.staff_id 
+inner join store on staff.store_id = store.store_id
+where store.store_id = 1
+group by category.name, store.store_id
+order by store.store_id, count(category.name) desc
+limit 1
+;
+
+select store.store_id as store_id, count(category.name) as film_count, category.name as category_name
+from rental 
+inner join inventory on rental.inventory_id = inventory.inventory_id 
+inner join film on inventory.film_id = film.film_id 
+inner join film_category on film.film_id = film_category.film_id 
+inner join category on film_category.category_id = category.category_id 
+inner join staff on rental.staff_id = staff.staff_id 
+inner join store on staff.store_id = store.store_id
+where store.store_id = 2
+group by category.name, store.store_id
+order by store.store_id, count(category.name) desc
+limit 1
+;
+
 -- 6. Rank the top 5 actors per country (determined by the number rentals) sort by most popular to least popular
+
+-- select concat(actor.first_name, ' ' , actor.last_name) as actor_full_name, count(rental.rental_id), country.country
+-- from rental
+-- inner join inventory on rental.inventory_id = inventory.inventory_id 
+-- inner join film on inventory.film_id = film.film_id 
+-- inner join film_actor on film.film_id = film_actor.film_id
+-- inner join actor on film_actor.actor_id = actor.actor_id
+-- inner join store on inventory.store_id = store.store_id
+-- inner join address on store.address_id = address.address_id
+-- inner join city on city.city_id = address.city_id
+-- inner join country on country.country_id = city.country_id
+-- group by concat(actor.first_name, ' ' , actor.last_name), country.country
+-- order by country desc, count(rental.rental_id) desc
+-- ;
+
+select concat(actor.first_name, ' ' , actor.last_name) as actor_full_name, count(rental.rental_id), country.country
+from rental
+inner join inventory on rental.inventory_id = inventory.inventory_id 
+inner join film on inventory.film_id = film.film_id 
+inner join film_actor on film.film_id = film_actor.film_id
+inner join actor on film_actor.actor_id = actor.actor_id
+inner join store on inventory.store_id = store.store_id
+inner join address on store.address_id = address.address_id
+inner join city on city.city_id = address.city_id
+inner join country on country.country_id = city.country_id
+where country.country = 'Canada'
+group by concat(actor.first_name, ' ' , actor.last_name), country.country
+order by country desc, count(rental.rental_id) desc
+limit 5
+;
+
+select concat(actor.first_name, ' ' , actor.last_name) as actor_full_name, count(rental.rental_id), country.country
+from rental
+inner join inventory on rental.inventory_id = inventory.inventory_id 
+inner join film on inventory.film_id = film.film_id 
+inner join film_actor on film.film_id = film_actor.film_id
+inner join actor on film_actor.actor_id = actor.actor_id
+inner join store on inventory.store_id = store.store_id
+inner join address on store.address_id = address.address_id
+inner join city on city.city_id = address.city_id
+inner join country on country.country_id = city.country_id
+where country.country = 'Australia'
+group by concat(actor.first_name, ' ' , actor.last_name), country.country
+order by country desc, count(rental.rental_id) desc
+limit 5;
+;
+
 
 -- 7. Create the ERD of this database.
